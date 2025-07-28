@@ -1,4 +1,4 @@
-🧠 Mind Vault
+🧠 Mind Vault:-<br />
 Mind Vault is a simple and elegant note-taking web app built with HTML, CSS, and JavaScript. It lets users quickly create, view, and manage personal notes — all saved directly in the browser using localStorage.
 
 ✨ Features:-<br />
