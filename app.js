@@ -27,11 +27,11 @@ function save() {
 }
 
 function saveNotes() {
-    return localStorage.setItem('quickNotes', JSON.stringify(notes));
+    return localStorage.setItem('mindVault', JSON.stringify(notes));
 }
 
 function loadNotes() {
-    return notes = JSON.parse(localStorage.getItem('quickNotes')) || [];
+    return notes = JSON.parse(localStorage.getItem('mindVault')) || [];
 }
 
 function renderNotes() {
