@@ -1,0 +1,460 @@
+:root {
+    font-size: 18px;
+    --scale: 1.01;
+    --base-color: hwb(205 0% 0%);
+    --base-variant-color: hwb(205 30% 10%);
+    --text-color: hwb(0 0% 100%);
+    --background-color: hwb(0 100% 0);
+    --transparent-color: hwb(205 70% 30% / 0.3);
+    --right-color: hwb(120 0% 20%);
+    --close-btn-color: hwb(0 25% 3%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    letter-spacing: .1rem;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    color: var(--text-color);
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.dark_mode {
+    --text-color: hwb(0 100% 0);;
+    --background-color: hwb(0 0% 100%);;
+    --transparent-color: hwb(205 30% 70% / 0.3);
+}
+
+svg {
+    width: 40px;
+    height: 40px;
+}
+
+#delete, #edit {
+    width: 30px;
+    height: 30px;
+}
+
+span {
+    text-shadow: 1px 1px 1px black;
+    color: var(--base-color);
+}
+
+hr {
+    margin: .1rem 0 .2rem 0;
+    width: 90%;
+    border: 1px solid var(--text-color);
+}
+
+.errorMsg {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: 2px solid red;
+    border: 2px solid red;
+}
+
+/* Header section */
+
+body > header {
+    padding: 0 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+header > h1 {
+    padding: 1rem .5rem;
+    height: 100%;
+    font-size: 2.5rem;
+}
+
+header > .headerBtns {
+    padding: 1rem .5rem;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 3rem;
+}
+
+.headerBtns > #addNote {
+    padding: 1rem .8rem;
+    font-size: 1rem;
+    background-color: var(--base-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    transition: all .3s ease;
+}
+
+.headerBtns > #addNote:hover {
+    color: var(--base-color);
+    background-color: white;
+    border: 2px solid var(--base-color);
+}
+
+.headerBtns > #toggleBtn {
+    background-color: none;
+    border: none;
+    border-radius: 50%;
+}
+
+.headerBtns > #addNote:hover, .headerBtns > #toggleBtn:hover {
+    transform: scale(var(--scale));
+    transition: all .3s ease;
+}
+
+#toggleBtn > #dark , #toggleBtn > #light {
+    width: 100%;
+    height: 100%;
+    background-color: var(--transparent-color);
+    padding: .5rem;
+    border-radius: 50%;
+}
+
+#toggleBtn > #dark {
+    fill: black;
+    background-color: var(--transparent-color);
+}
+
+#toggleBtn > #light {
+    fill: var(--base-color);
+    background-color: var(--transparent-color);
+}
+
+/* Dark Mode Display */
+
+.dark_mode #toggleBtn > #dark {
+    display: none;
+}
+
+.dark_mode #toggleBtn > #light {
+    display: flex;
+}
+
+#toggleBtn > #light {
+    display: none;
+}
+
+/* Main Section */
+
+main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+main > #notesContainer {
+    padding: 1rem;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Empty Note Container */
+#notesContainer > #emptyNote {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#emptyNote > header {
+    padding: .5rem 1rem;
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+#emptyNote > div {
+    padding: 1rem .5rem;
+    width: 100%;
+    text-align: center;
+    word-spacing: .2rem;
+    line-height: 1.5rem;
+}
+
+#emptyNote > button {
+    width: 40%;
+    margin: .8rem .5rem;
+    padding: 1rem 1rem;
+    font-size: 1.2rem;
+    color: white;
+    background-color: var(--base-color);
+    border: none;
+    border-radius: 10px;
+}
+
+#emptyNote > button:hover {
+    transform: scale(var(--scale));
+}
+
+/* Note container cards */
+
+
+main > .notesContainerFlex {
+    min-width: 80%;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+#notesContainer > .note-card {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--transparent-color);
+    border-radius: 10px;
+}
+
+#notesContainer > .note-card:hover {
+    transform: scale(var(--scale));
+    transition: all .3s ease;
+}
+
+.note-card > .note-card-btn {
+    display: none;
+}
+
+.note-card:hover > .note-card-btn {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    flex-direction: row;
+    position: absolute;
+    top: 0;
+    right: 3px;
+    border-radius: 10px;
+}
+
+.note-card:hover > .note-card-btn > .view-card {
+    margin-top: .2rem;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+}
+
+.note-card:hover > .note-card-btn > .delete-card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+}
+
+.note-card:hover > .note-card-btn > .view-card > svg, .note-card:hover > .note-card-btn > .delete-card > svg {
+    padding: .2rem;
+    fill: var(--text-color);
+}
+
+.note-card-btn > .view-card:hover > svg{
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transition: all .3s ease;
+    background-color: var(--base-variant-color);
+    color: var(--text-color);
+    border-radius: 5px;
+}
+
+.note-card-btn > .delete-card:hover > svg{
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transition: all .3s ease;
+    color: var(--text-color);
+    background-color: var(--close-btn-color);
+    border-radius: 5px;
+}
+
+
+.note-card > header {
+    width: 100%;
+    padding: 1rem .5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: left;
+    letter-spacing: .1rem;
+    border-radius: .1rem;
+}
+
+.note-card > .content {
+    width: 100%;
+    padding: .5rem .5rem 1rem .5rem;
+    font-size: .8rem;
+    letter-spacing: .1rem;
+    word-spacing: .05rem;
+    line-height: 1rem;
+    overflow: auto;
+    white-space: pre-line;
+}
+
+
+/* Dialog Section */
+dialog {
+    display: none;
+}
+
+.flex {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: none;
+    border-radius: .5rem;
+    background-image: linear-gradient(var(--transparent-color), white);
+    box-shadow: 0 0 0 var(--transparent-color),
+    1px 1px 100px var(--transparent-color);
+}
+
+dialog > #form {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+#form > header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5rem;
+}
+
+#form > header > h3 {
+    padding: 1rem 1.5rem;
+    font-size: 1.5rem;
+}
+
+#form > header > #closeBtn {
+    margin: 0 0 1rem 1rem;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    border-radius: .2rem;
+}
+
+#closeBtn > svg {
+    fill: black;
+}
+
+#closeBtn > svg:hover {
+    fill: white;
+    background-color: var(--close-btn-color);
+}
+
+#form > .form-group {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+}
+
+#form > .form-group > label {
+    padding: .5rem 2rem;
+    font-size: 1.3rem;
+}
+
+#form > .form-group > input, #form > .form-group > textarea {
+    margin: .3rem 2rem;
+    padding: .3rem;
+    font-size: 1rem;
+    letter-spacing: .05rem;
+    border: 1px solid var(--base-color);
+    border-radius: 10px;
+    outline: none;
+}
+
+#form > .form-group > #titleInput:focus, #form > .form-group > #contentInput:focus {
+    border: 2px solid var(--base-variant-color);
+}
+
+#form > .dialogBtns {
+    padding: 1rem 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#form > .dialogBtns > #cancelBtn, #form > .dialogBtns > #saveBtn {
+    padding: .5rem 1rem;
+    border-radius: 10px;
+    color: white;
+    border: none;
+}
+
+.dialogBtns > #cancelBtn {
+    background-color: var(--close-btn-color);
+}
+
+.dialogBtns > #saveBtn {
+    background-color: var(--right-color);
+}
+
+@media (max-width: 800px) {
+    body > header {
+        padding: 0;
+    }
+
+    header > .headerBtns {
+        gap: 1.4rem;
+    }
+
+    main > #notesContainer {
+        width: 95%;
+    }
+}
+
+@media (max-width: 500px) {
+    :root {
+        font-size: 16px;
+    }
+
+    header > h1 {
+        font-size: 2.2rem;
+    }
+
+    main {
+        margin-top: 2rem;
+    }
+
+    main > #notesContainer {
+        padding: 0 .3rem;
+        width: 100%;
+    }
+
+    main > .notesContainerFlex {
+        width: 100%;
+    }
+}
